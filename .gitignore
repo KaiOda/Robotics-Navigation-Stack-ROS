@@ -1,0 +1,9 @@
+build/
+devel/
+.history/
+.catkin_workspace
+__pycache__/
+*.pyc
+CMakeFiles/
+CMakeCache.txt
+Makefile
