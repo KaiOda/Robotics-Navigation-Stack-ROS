@@ -67,9 +67,10 @@ rosrun integrated_navigation_stack RRT_node.py
 
 ## Example Figure
 
+![SLAM and Path Planning](docs/images/fig_turtlesim_figure8.png)
+*RViz visualization showing RRT global path (green) over the SLAM map. Blue traces are lidar/trajectory; red marker is the goal.*
 
- `fig_turtlesim_figure8.png`
-*RViz visualization showing RRT global path (green) over the SLAM-generated occupancy map. Blue traces indicate LIDAR scan data; red marker denotes the navigation goal.*
+
 
 ---
 
