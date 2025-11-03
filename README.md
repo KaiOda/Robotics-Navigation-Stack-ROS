@@ -1,75 +1,90 @@
 # Robotics Navigation Stack (ROS, Gazebo, RViz)
 
-**Last updated:** 2025-10-28
+**Last updated:** 2025-10-28  
 
-This repository implements an end-to-end autonomous navigation pipeline for a
-differential-drive robot using ROS Noetic, integrating teleoperation, PID motion
-control, RRT planning, SLAM, and learning-based control.
+This project implements a complete **autonomous navigation pipeline** for a differential-drive robot using **ROS Noetic**, integrating **teleoperation**, **PID motion control**, **RRT path planning**, **SLAM mapping**, and **learning-based control**.
 
-## Project Modules
+---
+
+## Project Sections
 
 | Module | Description |
-|-------|-------------|
-| **Lab 1-2: Teleop & Goal Control** | Custom teleop, figure-8 swim, and goal-seeking on turtlesim. |
-| **Lab 3: PID Motion Control** | PID control of differential drive in Gazebo; mode-0/1 behaviors. |
-| **Lab 4: RRT Path Planning** | Sampling-based planner over occupancy grids (yaml/pgm). |
-| **Lab 5: Integrated Navigation** | RRT planner + PID controller + RViz odometry plotting. |
-| **Lab 6: SLAM Mapping** | Autonomous mapping; map_server save + localization alignment. |
-| **Lab 7: NN Learning** | MPC data -> NN controller (Keras/TensorFlow). |
-| **Lab 8: Imitation Learning** | ROS bag collection, dataset build, NN control in ROS node. |
+|---------|-------------|
+| **Lab 1–2 · Teleop & Goal Control** | Custom teleop node, figure-8 motion (“swim”), and goal-seeking behavior in *turtlesim*. |
+| **Lab 3 · PID Motion Control** | PID controller for a differential-drive robot in Gazebo, supporting multiple operating modes. |
+| **Lab 4 · RRT Path Planning** | Sampling-based motion planner over occupancy grids (`.yaml`/`.pgm`). |
+| **Lab 5 · Integrated Navigation** | Full navigation stack combining RRT planner, PID controller, and RViz odometry plotting. |
+| **Lab 6 · SLAM Mapping** | Autonomous mapping using *map_server*; localization and alignment through RViz. |
+| **Lab 7 · Neural Network Learning** | Model-predictive control (MPC) data distilled into neural network controllers using Keras/TensorFlow. |
+| **Lab 8 · Imitation Learning** | Data collection from expert trajectories and learned control via trained ROS nodes. |
+
+---
 
 ## Technologies
-- ROS Noetic, Gazebo, RViz
-- Python (rospy, numpy, cv2), TensorFlow/Keras
-- PID control, RRT path planning, Hector SLAM, map_server
-- ROS bags for data capture; RViz trajectory visualization
 
-## Repository Layout
-```
+- **ROS Noetic**, **Gazebo**, **RViz**
+- **Python (rospy, numpy, cv2)** · **TensorFlow/Keras**
+- PID control · RRT path planning · Hector SLAM · map_server
+- ROS bag capture · RViz trajectory visualization
+
+---
+
+## ⚙️ Repository Layout
+
+```text
 src/
-  teleop_control/              # Lab1-2
-  motion_planning_pid/         # Lab3
-  rrt_path_planning/           # Lab4
-  integrated_navigation_stack/  # Lab5
-  slam_mapping/                # Lab6
-  nn_learning/                 # Lab7
-  imitation_learning/          # Lab8
+  teleop_control/               # Lab 1–2
+  motion_planning_pid/          # Lab 3
+  rrt_path_planning/            # Lab 4
+  integrated_navigation_stack/  # Lab 5
+  slam_mapping/                 # Lab 6
+  nn_learning/                  # Lab 7
+  imitation_learning/           # Lab 8
 docs/
-images/                         # screenshots, figures
-reports/                        # PDF summaries (optional)
+  images/                       # Screenshots & figures
+  reports/                      # Optional PDF summaries
 ```
 
-## Quickstart
+---
+
+## Quick Start
+
 ```bash
-# From repo root
+# Build workspace
 catkin_make
 source devel/setup.bash
 
-# Gazebo world
+# Launch Gazebo world
 roslaunch turtlebot3_gazebo turtlebot3_world.launch
 
-# Example: integrated navigation (Lab 5)
+# Example: run full integrated navigation (Lab 5)
 rosrun integrated_navigation_stack Motion_Planner.py
 rosrun integrated_navigation_stack PID_Controller.py
 rosrun integrated_navigation_stack RRT_node.py
 ```
 
-## Example Figures
-See docs/images/ (place your screenshots):
+---
 
-- fig_turtlesim_figure8.png - turtlesim figure-8
-- fig_pid_tracking.png - PID trajectory tracking
-- fig_rrt_path_overlay.png - RRT path on occupancy map
-- fig_rviz_vs_rrt.png - RViz odometry vs planned path
-- fig_nn_trajectory.png - learned controller trajectory
+## Example Figure
+
+
+ `fig_turtlesim_figure8.png`
+*RViz visualization showing RRT global path (green) over the SLAM-generated occupancy map. Blue traces indicate LIDAR scan data; red marker denotes the navigation goal.*
+
+---
 
 ## Notes
-- Maps: src/*/maps/my_map.(pgm|yaml)
-- RViz config: src/integrated_navigation_stack/rviz_config/odom_plotter.rviz
-- Large binaries (bags, h5) are ignored by .gitignore by default.
+
+- Maps stored at `src/*/maps/my_map.(pgm|yaml)`  
+- RViz configuration: `src/integrated_navigation_stack/rviz_config/odom_plotter.rviz`  
+- Large binaries (`.bag`, `.h5`, etc.) are ignored by `.gitignore`
+
+---
 
 ## License
-MIT (adjust as needed)
+MIT — modify as appropriate
 
-Author: Kai Oda - UC Irvine - B.S. Computer Engineering (Dec 2025)
-GitHub: https://github.com/KaiOda
+---
+
+**Author:** Kai Oda · UC Irvine · B.S. Computer Engineering (Dec 2025)  
+**GitHub:** [github.com/KaiOda](https://github.com/KaiOda)
